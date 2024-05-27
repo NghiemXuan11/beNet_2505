@@ -15,11 +15,10 @@ namespace EX_2
             // Giải phương trình bậc 2: ax^2 + bx + c = 0
             Console.WriteLine("Giải phương trình bậc 2: ax^2 + bx + c = 0");
 
-            Console.WriteLine("Nhập a:");
-            double a = Convert.ToDouble(Console.ReadLine());
+            
+            double a = GetValidNumber("Nhập a: ");
 
-            Console.WriteLine("Nhập b:");
-            double b = Convert.ToDouble(Console.ReadLine());
+            double b = GetValidNumber("Nhập b: ");
 
             Console.WriteLine("Nhập c:");
             double c = Convert.ToDouble(Console.ReadLine());
