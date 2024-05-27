@@ -65,6 +65,34 @@ namespace EX_2
                     Console.WriteLine("Phương trình có hai nghiệm phân biệt: x1 = " + x1 + ", x2 = " + x2);
                 }
             }
-        }    
+        }
+
+        // Hàm nhập và kiểm tra tính hợp lệ của số
+        private double GetValidNumber(string prompt)
+        {
+            double number;
+            string input;
+            while (true)
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine();
+
+                // Kiểm tra dữ liệu nhập vào không được trống
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Dữ liệu nhập vào không được để trống. Vui lòng thử lại.\n");
+                    continue;
+                }
+
+                // Kiểm tra dữ liệu nhập vào có phải là số hay không
+                if (!double.TryParse(input, out number))
+                {
+                    Console.WriteLine("Dữ liệu nhập vào phải là một số. Vui lòng thử lại.\n");
+                    continue;
+                }
+
+                return number;
+            }
+        }
     }
 }
