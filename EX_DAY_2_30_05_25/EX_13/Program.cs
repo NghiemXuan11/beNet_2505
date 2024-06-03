@@ -8,7 +8,7 @@ class Program
     {
         Console.OutputEncoding = Encoding.Unicode;
         Console.InputEncoding = Encoding.Unicode;
-        List<int> numbers = new List<int>();
+        List<double> numbers = new List<double>();
 
         int numberOfElements;
         while (true)
@@ -29,10 +29,9 @@ class Program
             }
 
             break;
-            
         }
 
-        Console.WriteLine("Nhập các số nguyên:");
+        Console.WriteLine("Nhập các số thực:");
 
         for (int i = 0; i < numberOfElements; i++)
         {
@@ -47,9 +46,9 @@ class Program
                     continue;
                 }
 
-                if (!int.TryParse(input, out int number))
+                if (!double.TryParse(input, out double number))
                 {
-                    Console.WriteLine("Dữ liệu nhập vào phải là số nguyên. Vui lòng nhập lại.");
+                    Console.WriteLine("Dữ liệu nhập vào phải là số thực. Vui lòng nhập lại.");
                     continue;
                 }
 
@@ -58,20 +57,29 @@ class Program
             }
         }
 
-        List<int> oddNumbers = new List<int>();
-        int sumOddNumbers = 0;
+        double[] numbersArray = numbers.ToArray();
 
-        foreach (int number in numbers)
+        double max;
+        FindMaxValue(numbersArray, out max);
+        Console.WriteLine($"Giá trị lớn nhất trong mảng là: {max}");
+
+        Console.ReadKey();
+    }
+
+    static void FindMaxValue(double[] array, out double maxValue)
+    {
+        if (array == null || array.Length == 0)
         {
-            if (number % 2 != 0)
-            {
-                oddNumbers.Add(number);
-                sumOddNumbers += number;
-            }
+            throw new ArgumentException("Mảng không được rỗng");
         }
 
-        Console.WriteLine("Các số lẻ trong mảng là: " + string.Join(", ", oddNumbers));
-        Console.WriteLine($"Tổng các số lẻ là: {sumOddNumbers}");
-        Console.ReadKey();
+        maxValue = array[0];
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] > maxValue)
+            {
+                maxValue = array[i];
+            }
+        }
     }
 }

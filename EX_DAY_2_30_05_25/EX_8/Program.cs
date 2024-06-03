@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 class Program
 {
     static void Main()
     {
+        int[] array;
         Console.OutputEncoding = Encoding.Unicode;
         Console.InputEncoding = Encoding.Unicode;
-        List<int> numbers = new List<int>();
-
         int numberOfElements;
         while (true)
         {
@@ -29,16 +27,17 @@ class Program
             }
 
             break;
-            
         }
 
-        Console.WriteLine("Nhập các số nguyên:");
+        array = new int[numberOfElements];
+
+        Console.WriteLine("Nhập các phần tử của mảng:");
 
         for (int i = 0; i < numberOfElements; i++)
         {
             while (true)
             {
-                Console.Write($"Nhập số thứ {i + 1}: ");
+                Console.Write($"Nhập phần tử thứ {i + 1}: ");
                 string input = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(input))
@@ -53,25 +52,52 @@ class Program
                     continue;
                 }
 
-                numbers.Add(number);
+                array[i] = number;
                 break;
             }
         }
 
-        List<int> oddNumbers = new List<int>();
-        int sumOddNumbers = 0;
+        Console.WriteLine("Mảng đã nhập:");
+        PrintArray(array);
 
-        foreach (int number in numbers)
+        Console.WriteLine("Các số lẻ trong mảng:");
+        PrintOddNumbers(array);
+
+        Console.WriteLine("Các số chẵn trong mảng:");
+        PrintEvenNumbers(array);
+        Console.ReadKey();
+    }
+
+    static void PrintArray(int[] array)
+    {
+        foreach (var item in array)
         {
-            if (number % 2 != 0)
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void PrintOddNumbers(int[] array)
+    {
+        foreach (var item in array)
+        {
+            if (item % 2 != 0)
             {
-                oddNumbers.Add(number);
-                sumOddNumbers += number;
+                Console.Write(item + " ");
             }
         }
+        Console.WriteLine();
+    }
 
-        Console.WriteLine("Các số lẻ trong mảng là: " + string.Join(", ", oddNumbers));
-        Console.WriteLine($"Tổng các số lẻ là: {sumOddNumbers}");
-        Console.ReadKey();
+    static void PrintEvenNumbers(int[] array)
+    {
+        foreach (var item in array)
+        {
+            if (item % 2 == 0)
+            {
+                Console.Write(item + " ");
+            }
+        }
+        Console.WriteLine();
     }
 }
