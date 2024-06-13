@@ -1,9 +1,13 @@
-﻿namespace EX_02
+﻿using System.Text;
+
+namespace EX_02
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
             Dictionary<int, SinhVien> dsSinhVien = new Dictionary<int, SinhVien>();
 
             while (true)
