@@ -20,7 +20,7 @@ namespace EX_1
                 Console.WriteLine("3. Sắp xếp sinh viên");
                 Console.WriteLine("4. Cập nhật thông tin sinh viên");
                 Console.WriteLine("5. Xóa sinh viên");
-                Console.WriteLine("0. Thoát");
+                Console.WriteLine("6. Thoát");
                 Console.Write("Chọn chức năng: ");
                 int choice = int.Parse(Console.ReadLine());
 
@@ -41,7 +41,7 @@ namespace EX_1
                     case 5:
                         DeleteStudents(studentManager);
                         break;
-                    case 0:
+                    case 6:
                         return;
                     default:
                         Console.WriteLine("Chức năng không hợp lệ.");
