@@ -1,0 +1,28 @@
+﻿@model List<WebMVC_NetFrameWork.Models.Product>
+@using System.ComponentModel.DataAnnotations
+@using WebMVC_NetFrameWork.Models
+@using System.Web.Mvc
+
+<h2>Products List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Active</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+            <td>@(product.IsActive ? "Yes" : "No")</td>
+        </tr>
+    }
+</table>
