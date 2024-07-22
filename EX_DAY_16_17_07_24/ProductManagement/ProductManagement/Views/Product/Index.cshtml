@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProductManagement.Data.DTO.Product>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+
+<div>
+    <input type="text" id="searchBox" placeholder="Search by name" />
+    <button id="searchButton">Search</button>
+</div>
+
+<div id="productList">
+    @Html.Partial("_ProductList", Model)
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#searchButton').on('click', function () {
+                var name = $('#searchBox').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Search", "Product")',
+                    data: { name: name },
+                    success: function (response) {
+                        $('#productList').html(response);
+                    },
+                    error: function (error) {
+                        alert("Error searching products");
+                    }
+                });
+            });
+        });
+    </script>
+}

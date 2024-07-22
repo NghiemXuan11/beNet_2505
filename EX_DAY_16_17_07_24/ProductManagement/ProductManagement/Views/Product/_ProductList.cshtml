@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ProductManagement.Data.DTO.Product>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Is Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>
